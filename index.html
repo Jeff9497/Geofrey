@@ -3,13 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <link rel="stylesheet" href="assets/css/styles.css">
-
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
-        <title>Portfolio website complete</title>
+        <title>Geofrey - Tech Portfolio</title>
+        <!-- Simple Analytics -->
+        <script>
+            // Simple page view counter using localStorage
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check if localStorage is available
+                if (typeof(Storage) !== "undefined") {
+                    // Get current count or initialize to 0
+                    let viewCount = localStorage.getItem('pageViewCount') || 0;
+                    // Increment count
+                    viewCount = parseInt(viewCount) + 1;
+                    // Store updated count
+                    localStorage.setItem('pageViewCount', viewCount);
+                    // Display count in console (for testing)
+                    console.log('Page view count: ' + viewCount);
+                }
+            });
+        </script>
     </head>
     <body>
         <!--===== HEADER =====-->
@@ -33,6 +47,11 @@
                 <div class="nav__toggle" id="nav-toggle">
                     <i class='bx bx-menu'></i>
                 </div>
+
+                <!-- Theme toggle button -->
+                <div class="theme-toggle" id="theme-toggle">
+                    <i class='bx bx-moon'></i>
+                </div>
             </nav>
         </header>
 
@@ -40,73 +59,143 @@
             <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
                 <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Geofrey</span><br>A web Designer <br>Software engineer</h1>
-
-           
+                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Geofrey</span><br>A web Designer <br>Software engineer<br><span class="home__subtitle">AI & ML Enthusiast</span></h1>
                 </div>
 
                 <div class="home__social">
                     <a href="" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="" class="home__social-icon"><i class='bx bxl-behance' ></i></a>
-                    <a href="https://github.com/Jeff9497" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                    <a href="https://huggingface.co/Jeff28" class="home__social-icon" target="_blank"><i class='bx bx-brain'></i></a>
+                    <a href="https://github.com/Jeff9497" class="home__social-icon" target="_blank"><i class='bx bxl-github'></i></a>
                 </div>
 
                 <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="200" y="0.5" href="assets/img/jeff.jpg"/>
-                        </g>
-                    </svg>
+                    <!-- Binary animation container instead of image -->
+                    <div class="binary-animation-container">
+                        <div class="binary-animation" id="binary-animation"></div>
+                    </div>
                 </div>
             </section>
 
             <!--===== ABOUT =====-->
-            <section class="about section " id="about">
+            <section class="about section" id="about">
                 <h2 class="section-title">About</h2>
-
                 <div class="about__container bd-grid">
                     <div class="about__img">
                         <img src="assets/img/work3.jpg" alt="">
                     </div>
-                    
+
                     <div>
                         <h2 class="about__subtitle">I am Geofrey </h2>
-                        <p class="about__text">A Computer Science student deeply immersed in the realms of AI, machine learning, software development, and networking. With a fervent passion for innovation, I've honed my skills through engaging projects that showcase my ability to translate complex ideas into practical solutions. Whether crafting elegant code for software development or designing secure network architectures, I bring a dynamic approach to technology. Eager to contribute my enthusiasm and expertise to a forward-thinking team, I'm excited about the prospect of driving impactful change in the tech landscape.</p>           
-                    </div>                                   
+                        <p class="about__text">A Computer Science student deeply immersed in the realms of AI, machine learning, software development, and networking. With a fervent passion for innovation, I've honed my skills through engaging projects that showcase my ability to translate complex ideas into practical solutions. Whether crafting elegant code for software development or designing secure network architectures, I bring a dynamic approach to technology. Eager to contribute my enthusiasm and expertise to a forward-thinking team, I'm excited about the prospect of driving impactful change in the tech landscape.</p>
+                    </div>
                 </div>
             </section>
 
             <!--===== PROJECT =====-->
-            <section class="projection section " id="project">
+            <section class="projection section" id="project">
                 <h2 class="section-title">Projects</h2>
-
                 <div class="about__container bd-grid">
                     <div class="about__img">
                         <img src="assets/img/chat28.png" alt="">
                     </div>
-                    
+
                     <div>
                         <h2 class="about__subtitle">ChatBuddy28 </h2>
-                        <p class="about__text">Meet ChatBuddy28 – your WhatsApp chat companion! This savvy bot streamlines conversations with automated replies, ensuring quick and personalized responses for a smooth chatting experience. Say hello to instant communication efficiency! </p> 
+                        <p class="about__text">Meet ChatBuddy28 – your WhatsApp chat companion! This savvy bot streamlines conversations with automated replies, ensuring quick and personalized responses for a smooth chatting experience. Say hello to instant communication efficiency! </p>
+
                         <h2 class="about__subtitle">Whatsapify </h2>
-                        <p class="about__text">Introducing Whatsapify – a WhatsApp bot powered by ChatGPT API! Enjoy seamless conversations with this smart bot, providing quick and personalized responses for an enhanced chatting experience. Chat effortlessly with Whatsapify!</p>   
+                        <p class="about__text">Introducing Whatsapify – a WhatsApp bot powered by ChatGPT API! Enjoy seamless conversations with this smart bot, providing quick and personalized responses for an enhanced chatting experience. Chat effortlessly with Whatsapify!</p>
+
                         <h2 class="about__subtitle">Whatsapify Reminder System </h2>
-                        <p class="about__text">Whatsapify Reminder System – your go-to for timely reminders on WhatsApp! Stay organized effortlessly as this system keeps you on track with personalized alerts for all your important tasks. Never miss a beat with Whatsapify Reminder System!</p>                   
-                    </div>                                  
+                        <p class="about__text">Whatsapify Reminder System – your go-to for timely reminders on WhatsApp! Stay organized effortlessly as this system keeps you on track with personalized alerts for all your important tasks. Never miss a beat with Whatsapify Reminder System!</p>
+                    </div>
+                </div>
+
+                <!-- New Featured Projects Section -->
+                <div class="featured-projects">
+                    <h2 class="section-subtitle">Featured Projects</h2>
+                    <div class="featured-projects-grid">
+                        <!-- MCP AI App -->
+                        <div class="featured-project-card">
+                            <div class="project-badge">Coming Soon</div>
+                            <h3>MCP AI App</h3>
+                            <p>A mobile application that connects to MCP servers for AI-powered automation and assistance. Built with React Native and Expo.</p>
+                            <div class="tech-stack">
+                                <span>React Native</span>
+                                <span>Expo</span>
+                                <span>AI Integration</span>
+                            </div>
+                        </div>
+
+                        <!-- MCPHub8 -->
+                        <div class="featured-project-card">
+                            <div class="project-badge">Coming Soon</div>
+                            <h3>MCPHub8</h3>
+                            <p>A central hub for connecting to various MCP servers, enabling AI-powered automation for GitHub, browser interactions, and more.</p>
+                            <div class="tech-stack">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>Socket.IO</span>
+                            </div>
+                        </div>
+
+                        <!-- SummaSense28 -->
+                        <div class="featured-project-card">
+                            <h3>SummaSense28</h3>
+                            <p>An intelligent text summarization tool that condenses long articles and documents while preserving key information.</p>
+                            <div class="tech-stack">
+                                <span>NLP</span>
+                                <span>JavaScript</span>
+                                <span>API Integration</span>
+                            </div>
+                            <a href="https://summa-sense28.vercel.app" class="project-link" target="_blank">View Project</a>
+                        </div>
+
+                        <!-- Trix28 -->
+                        <div class="featured-project-card">
+                            <h3>Trix28</h3>
+                            <p>A web application focused on enhancing productivity and organization.</p>
+                            <div class="tech-stack">
+                                <span>JavaScript</span>
+                                <span>React</span>
+                                <span>Vercel</span>
+                            </div>
+                            <a href="https://trix28.vercel.app" class="project-link" target="_blank">View Project</a>
+                        </div>
+
+                        <!-- EvSentry8 -->
+                        <div class="featured-project-card">
+                            <h3>EvSentry8</h3>
+                            <p>AI-powered tomato leaf disease detection with adjustable confidence levels. Built with computer vision and machine learning.</p>
+                            <div class="tech-stack">
+                                <span>AI</span>
+                                <span>Computer Vision</span>
+                                <span>Hugging Face</span>
+                            </div>
+                            <a href="https://huggingface.co/spaces/Jeff28/EvSentry8" class="project-link" target="_blank">View Project</a>
+                        </div>
+
+                        <!-- FarMVi8ioN -->
+                        <div class="featured-project-card">
+                            <h3>FarMVi8ioN</h3>
+                            <p>Farm Vision AI tool for agricultural analysis and monitoring using advanced computer vision techniques.</p>
+                            <div class="tech-stack">
+                                <span>AI</span>
+                                <span>Machine Learning</span>
+                                <span>Agriculture Tech</span>
+                            </div>
+                            <a href="https://huggingface.co/spaces/Jeff28/FarMVi8ioN" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!--===== SKILLS =====-->
             <section class="skills section" id="skills">
                 <h2 class="section-title">Skills</h2>
-
-                <div class="skills__container bd-grid">          
+                <div class="skills__container bd-grid">
                     <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
+                        <h2 class="skills__subtitle">Professional Skills</h2>
                         <p class="skills__text">I possess a versatile skill set encompassing software development, AI, machine learning, and networking, with a proven ability to transform conceptual ideas into tangible, innovative solutions.<br> Here are some of the languages I am pro-efficient in : </p>
                         <div class="skills__data">
                             <div class="skills__names">
@@ -114,7 +203,6 @@
                                 <span class="skills__name">HTML 5 </span>
                             </div>
                             <div class="skills__bar skills__html">
-
                             </div>
                             <div>
                                 <span class="skills__percentage">80%</span>
@@ -126,7 +214,6 @@
                                 <span class="skills__name">TYPESCRIPT</span>
                             </div>
                             <div class="skills__bar skills__css">
-                                
                             </div>
                             <div>
                                 <span class="skills__percentage">85%</span>
@@ -138,7 +225,6 @@
                                 <span class="skills__name">JAVASCRIPT</span>
                             </div>
                             <div class="skills__bar skills__js">
-                                
                             </div>
                             <div>
                                 <span class="skills__percentage">75%</span>
@@ -150,16 +236,39 @@
                                 <span class="skills__name">PYTHON</span>
                             </div>
                             <div class="skills__bar skills__ux">
-                                
                             </div>
                             <div>
                                 <span class="skills__percentage">90%</span>
                             </div>
                         </div>
+                        <!-- New skill: React -->
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-react skills__icon'></i>
+                                <span class="skills__name">REACT</span>
+                            </div>
+                            <div class="skills__bar skills__react">
+                            </div>
+                            <div>
+                                <span class="skills__percentage">80%</span>
+                            </div>
+                        </div>
+                        <!-- New skill: Node.js -->
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-nodejs skills__icon'></i>
+                                <span class="skills__name">NODE.JS</span>
+                            </div>
+                            <div class="skills__bar skills__nodejs">
+                            </div>
+                            <div>
+                                <span class="skills__percentage">85%</span>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
+
+                    <div>
+                        <img src="assets/img/tech.jpg" alt="" class="skills__img">
                     </div>
                 </div>
             </section>
@@ -167,25 +276,42 @@
             <!--===== WORK =====-->
             <section class="work section" id="work">
                 <h2 class="section-title">Work</h2>
-
                 <div class="work__container bd-grid">
-                    <a href="" class="work__img">
+                    <a href="https://chat-buddy28.vercel.app/" class="work__img" target="_blank">
                         <img src="assets/img/chat28.png" alt="">
+                        <div class="work__overlay">
+                            <h3>ChatBuddy28</h3>
+                        </div>
                     </a>
-                    <a href="" class="work__img">
+                    <a href="https://github.com/Jeff9497/WhatsApify" class="work__img" target="_blank">
                         <img src="assets/img/whatsapifybot.jpg" alt="">
+                        <div class="work__overlay">
+                            <h3>WhatsApify</h3>
+                        </div>
                     </a>
-                    <a href="" class="work__img">
+                    <a href="https://github.com/Jeff9497/WhatsApify" class="work__img" target="_blank">
                         <img src="assets/img/whatsapifyminder.jpg" alt="">
+                        <div class="work__overlay">
+                            <h3>WhatsApify Reminder</h3>
+                        </div>
                     </a>
-                    <a href="" class="work__img">
+                    <a href="https://github.com/Jeff9497/SynapticRandNumGen" class="work__img" target="_blank">
                         <img src="assets/img/sql.jpg" alt="">
+                        <div class="work__overlay">
+                            <h3>SynapticRandNumGen</h3>
+                        </div>
                     </a>
-                    <a href="" class="work__img">
+                    <a href="https://geofrey94.vercel.app" class="work__img" target="_blank">
                         <img src="assets/img/webdesign.jpg" alt="">
+                        <div class="work__overlay">
+                            <h3>Web Design</h3>
+                        </div>
                     </a>
-                    <a href="" class="work__img">
+                    <a href="https://github.com/Jeff9497/LAX" class="work__img" target="_blank">
                         <img src="assets/img/tech.jpg" alt="">
+                        <div class="work__overlay">
+                            <h3>LAX - Local AI Execution</h3>
+                        </div>
                     </a>
                 </div>
             </section>
@@ -193,13 +319,13 @@
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
                 <h2 class="section-title">Contact</h2>
-
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
+                    <form action="" class="contact__form" id="contact-form">
+                        <input type="text" placeholder="Name" class="contact__input" id="name" required>
+                        <input type="email" placeholder="Email" class="contact__input" id="email" required>
+                        <textarea name="message" id="message" cols="0" rows="10" class="contact__input" placeholder="Your message here..." required></textarea>
+                        <input type="button" value="Send" class="contact__button button" id="send-message">
+                        <div class="form-message" id="form-message"></div>
                     </form>
                 </div>
             </section>
@@ -209,16 +335,20 @@
         <footer class="footer">
             <p class="footer__title">Geofrey</p>
             <div class="footer__social">
-                <a href="https://github.com/Jeff9497" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                <a href="https://x.com/Jeffmk941" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://github.com/Jeff9497" class="footer__icon" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://x.com/Jeffmk941" class="footer__icon" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="https://github.com/Jeff9497" class="footer__icon" target="_blank"><i class='bx bx-file' title="View Resume"></i></a>
+                <a href="mailto:jeffkamau9497@gmail.com" class="footer__icon" target="_blank"><i class='bx bx-envelope' title="Email Me"></i></a>
             </div>
-            <p class="footer__copy">&#169; Geofrey . All rigths reserved   .     0757024244  </p>
+            <div class="visitor-counter">
+                <p>Thank you for visiting!</p>
+                <div id="visit-count">Loading...</div>
+            </div>
+            <p class="footer__copy">&#169; Geofrey. All rights reserved. | 0757024244</p>
         </footer>
-
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
-
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
     </body>
