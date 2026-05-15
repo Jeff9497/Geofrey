@@ -53,20 +53,6 @@
                 gap: 12px;
                 align-items: center;
             }
-            .cv-download-btn {
-                background: #fff;
-                color: #667eea;
-                border: none;
-                padding: 6px 14px;
-                border-radius: 5px;
-                font-size: 0.85rem;
-                font-weight: 600;
-                cursor: pointer;
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                gap: 5px;
-            }
             .cv-close-btn {
                 background: none;
                 border: none;
@@ -84,14 +70,17 @@
             }
         </style>
 
-        <!-- Simple Analytics -->
+        <!-- localStorage counter (tracks visits on this device/browser) -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 if (typeof(Storage) !== "undefined") {
                     let viewCount = localStorage.getItem('pageViewCount') || 0;
                     viewCount = parseInt(viewCount) + 1;
                     localStorage.setItem('pageViewCount', viewCount);
-                    console.log('Page view count: ' + viewCount);
+                    console.log('Page view count (this browser): ' + viewCount);
+
+                    const el = document.getElementById('visit-count');
+                    if (el) el.textContent = 'You have visited ' + viewCount + ' time(s) on this device.';
                 }
             });
         </script>
@@ -104,9 +93,6 @@
                 <div class="cv-modal-header">
                     <span><i class='bx bx-file'></i> &nbsp;Geofrey Kamau — CV</span>
                     <div class="cv-modal-actions">
-                        <a href="assets/Geofrey_Kamau_CV.pdf" download="Geofrey_Kamau_CV.pdf" class="cv-download-btn">
-                            <i class='bx bx-download'></i> Download
-                        </a>
                         <button class="cv-close-btn" onclick="document.getElementById('cv-modal').classList.remove('active')">&times;</button>
                     </div>
                 </div>
@@ -441,6 +427,7 @@
             </div>
             <div class="visitor-counter">
                 <p>Thank you for visiting!</p>
+                <!-- Shows per-device count from localStorage -->
                 <div id="visit-count">Loading...</div>
             </div>
             <p class="footer__copy">&#169; Geofrey. All rights reserved. | 0757024244</p>
@@ -451,15 +438,16 @@
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
 
+        <!-- ===== VERCEL ANALYTICS (global real visitor tracking — enable in Vercel dashboard) ===== -->
+        <script defer src="/_vercel/insights/script.js"></script>
+
         <!-- CV Modal Script -->
         <script>
             function closeCVModal(event) {
-                // Close only if clicking the dark overlay, not the modal box itself
                 if (event.target === document.getElementById('cv-modal')) {
                     document.getElementById('cv-modal').classList.remove('active');
                 }
             }
-            // Close with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     document.getElementById('cv-modal').classList.remove('active');
