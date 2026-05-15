@@ -9,25 +9,111 @@
         <!-- =====FAVICON===== -->
         <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23667eea' stroke='%23764ba2' stroke-width='3'/%3E%3Ctext x='50' y='60' font-family='Arial, sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='white'%3EG8%3C/text%3E%3C/svg%3E">
         <title>Geofrey28</title>
+
+        <!-- CV Modal Styles -->
+        <style>
+            .cv-modal-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                z-index: 9999;
+                justify-content: center;
+                align-items: center;
+            }
+            .cv-modal-overlay.active {
+                display: flex;
+            }
+            .cv-modal-box {
+                position: relative;
+                width: 92%;
+                max-width: 900px;
+                height: 90vh;
+                background: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            }
+            .cv-modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 20px;
+                background: #667eea;
+                color: #fff;
+            }
+            .cv-modal-header span {
+                font-size: 1rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+            .cv-modal-actions {
+                display: flex;
+                gap: 12px;
+                align-items: center;
+            }
+            .cv-download-btn {
+                background: #fff;
+                color: #667eea;
+                border: none;
+                padding: 6px 14px;
+                border-radius: 5px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                cursor: pointer;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+            .cv-close-btn {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 26px;
+                cursor: pointer;
+                line-height: 1;
+                padding: 0 4px;
+            }
+            .cv-modal-box iframe {
+                width: 100%;
+                height: calc(90vh - 50px);
+                border: none;
+                display: block;
+            }
+        </style>
+
         <!-- Simple Analytics -->
         <script>
-            // Simple page view counter using localStorage
             document.addEventListener('DOMContentLoaded', function() {
-                // Check if localStorage is available
                 if (typeof(Storage) !== "undefined") {
-                    // Get current count or initialize to 0
                     let viewCount = localStorage.getItem('pageViewCount') || 0;
-                    // Increment count
                     viewCount = parseInt(viewCount) + 1;
-                    // Store updated count
                     localStorage.setItem('pageViewCount', viewCount);
-                    // Display count in console (for testing)
                     console.log('Page view count: ' + viewCount);
                 }
             });
         </script>
     </head>
     <body>
+
+        <!-- ===== CV MODAL ===== -->
+        <div class="cv-modal-overlay" id="cv-modal" onclick="closeCVModal(event)">
+            <div class="cv-modal-box">
+                <div class="cv-modal-header">
+                    <span><i class='bx bx-file'></i> &nbsp;Geofrey Kamau — CV</span>
+                    <div class="cv-modal-actions">
+                        <a href="assets/Geofrey_Kamau_CV.pdf" download="Geofrey_Kamau_CV.pdf" class="cv-download-btn">
+                            <i class='bx bx-download'></i> Download
+                        </a>
+                        <button class="cv-close-btn" onclick="document.getElementById('cv-modal').classList.remove('active')">&times;</button>
+                    </div>
+                </div>
+                <iframe src="assets/Geofrey_Kamau_CV.pdf" title="Geofrey Kamau CV"></iframe>
+            </div>
+        </div>
+
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
@@ -61,7 +147,7 @@
             <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
                 <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Geofrey</span><br>A Computer Scientist  <br>Software engineer<br><span class="home__subtitle">AI & ML Enthusiast</span></h1>
+                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Geofrey</span><br>A Computer Scientist <br>Software engineer<br><span class="home__subtitle">AI & ML Enthusiast</span></h1>
                 </div>
 
                 <div class="home__social">
@@ -71,7 +157,6 @@
                 </div>
 
                 <div class="home__img">
-                    <!-- Binary animation container instead of image -->
                     <div class="binary-animation-container">
                         <div class="binary-animation" id="binary-animation"></div>
                     </div>
@@ -87,7 +172,7 @@
                     </div>
 
                     <div>
-                        <h2 class="about__subtitle">I am Geofrey </h2>
+                        <h2 class="about__subtitle">I am Geofrey</h2>
                         <p class="about__text">A Certified Computer Scientist deeply immersed in the realms of AI, machine learning, software development, and networking. With a fervent passion for innovation, I've honed my skills through engaging projects that showcase my ability to translate complex ideas into practical solutions. Whether crafting elegant code for software development or designing secure network architectures, I bring a dynamic approach to technology. Eager to contribute my enthusiasm and expertise to a forward-thinking team, I'm excited about the prospect of driving impactful change in the tech landscape.</p>
                     </div>
                 </div>
@@ -102,164 +187,130 @@
                     </div>
 
                     <div>
-                        <h2 class="about__subtitle">ChatBuddy28 </h2>
-                        <p class="about__text">Meet ChatBuddy28 – your WhatsApp chat companion! This savvy bot streamlines conversations with automated replies, ensuring quick and personalized responses for a smooth chatting experience. Say hello to instant communication efficiency! </p>
+                        <h2 class="about__subtitle">ChatBuddy28</h2>
+                        <p class="about__text">Meet ChatBuddy28 – your WhatsApp chat companion! This savvy bot streamlines conversations with automated replies, ensuring quick and personalized responses for a smooth chatting experience. Say hello to instant communication efficiency!</p>
 
-                        <h2 class="about__subtitle">Whatsapify </h2>
+                        <h2 class="about__subtitle">Whatsapify</h2>
                         <p class="about__text">Introducing Whatsapify – a WhatsApp bot powered by ChatGPT API! Enjoy seamless conversations with this smart bot, providing quick and personalized responses for an enhanced chatting experience. Chat effortlessly with Whatsapify!</p>
 
-                        <h2 class="about__subtitle">Whatsapify Reminder System </h2>
+                        <h2 class="about__subtitle">Whatsapify Reminder System</h2>
                         <p class="about__text">Whatsapify Reminder System – your go-to for timely reminders on WhatsApp! Stay organized effortlessly as this system keeps you on track with personalized alerts for all your important tasks. Never miss a beat with Whatsapify Reminder System!</p>
                     </div>
                 </div>
 
-                <!-- New Featured Projects Section -->
+                <!-- Featured Projects Section -->
                 <div class="featured-projects">
                     <h2 class="section-subtitle">Featured Projects</h2>
                     <div class="featured-projects-grid">
-                        <!-- DataLearn-Hub8 -->
+
                         <div class="featured-project-card">
                             <h3>DataLearn-Hub8</h3>
                             <p>A comprehensive data science and data engineering learning platform with extensive professional-grade content.</p>
                             <div class="tech-stack">
-                                <span>JavaScript</span>
-                                <span>React</span>
-                                <span>Education Tech</span>
+                                <span>JavaScript</span><span>React</span><span>Education Tech</span>
                             </div>
                             <a href="https://datalearnhub8.vercel.app" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- Job8earch -->
                         <div class="featured-project-card">
                             <h3>Job8earch</h3>
                             <p>AI-Powered Job Search Platform built with React, featuring intelligent job matching and search capabilities.</p>
                             <div class="tech-stack">
-                                <span>JavaScript</span>
-                                <span>React</span>
-                                <span>AI Integration</span>
+                                <span>JavaScript</span><span>React</span><span>AI Integration</span>
                             </div>
                             <a href="https://job8earch.vercel.app" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- 200Model8-Chat -->
                         <div class="featured-project-card">
                             <h3>200Model8-Chat</h3>
                             <p>Free AI Chat Interface with web search, file upload, and multiple themes. Access free AI models like Llama 3.1, Mistral, Gemma, and more!</p>
                             <div class="tech-stack">
-                                <span>TypeScript</span>
-                                <span>AI Models</span>
-                                <span>Web Search</span>
+                                <span>TypeScript</span><span>AI Models</span><span>Web Search</span>
                             </div>
                             <a href="https://200-model8-chat.vercel.app" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- 200Model8Dev -->
                         <div class="featured-project-card">
                             <h3>200Model8Dev</h3>
                             <p>Advanced AI chat interface with real-time web search capabilities and multiple AI model support.</p>
                             <div class="tech-stack">
-                                <span>TypeScript</span>
-                                <span>Real-time Search</span>
-                                <span>Multi-Model AI</span>
+                                <span>TypeScript</span><span>Real-time Search</span><span>Multi-Model AI</span>
                             </div>
                             <a href="https://200model8dev.vercel.app" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- LAX -->
                         <div class="featured-project-card">
                             <h3>LAX - Local AI eXecution</h3>
                             <p>LAX enables seamless local deployment and interaction with various AI models, starting with GPT-2, directly from your terminal.</p>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>AI Models</span>
-                                <span>Terminal Interface</span>
+                                <span>Python</span><span>AI Models</span><span>Terminal Interface</span>
                             </div>
                             <a href="https://github.com/Jeff9497/LAX" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- Ollama8Web -->
                         <div class="featured-project-card">
                             <h3>Ollama8Web</h3>
                             <p>A modern web interface for Ollama, built with Next.js and Chakra UI for seamless AI model interaction.</p>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Next.js</span>
-                                <span>Chakra UI</span>
+                                <span>Python</span><span>Next.js</span><span>Chakra UI</span>
                             </div>
                             <a href="https://github.com/Jeff9497/Ollama8Web" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- D-Link Decryptor 2.0 -->
                         <div class="featured-project-card">
                             <h3>D-Link Decryptor 2.0</h3>
                             <p>This script transforms D-Link router firmware .bin files from binary code into assembly language for easier analysis.</p>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Cybersecurity</span>
-                                <span>Firmware Analysis</span>
+                                <span>Python</span><span>Cybersecurity</span><span>Firmware Analysis</span>
                             </div>
                             <a href="https://github.com/Jeff9497/D-Link-Decryptor-2.0" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- Amaya28 -->
                         <div class="featured-project-card">
                             <h3>Amaya28</h3>
                             <p>028-Amaya Resonance: Experience the magic of converting your text into captivating speech with a variety of unique voices!</p>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Text-to-Speech</span>
-                                <span>Voice Synthesis</span>
+                                <span>Python</span><span>Text-to-Speech</span><span>Voice Synthesis</span>
                             </div>
                             <a href="https://github.com/Jeff9497/Amaya28" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- QueryQuest28 -->
                         <div class="featured-project-card">
                             <h3>QueryQuest28</h3>
                             <p>Looking to automate and personalize your Google searches? QueryQuest28 streamlines your search experience with customizable options.</p>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Search Automation</span>
-                                <span>Terminal Interface</span>
+                                <span>Python</span><span>Search Automation</span><span>Terminal Interface</span>
                             </div>
                             <a href="https://github.com/Jeff9497/QueryQuest28" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- EvSentry8 -->
                         <div class="featured-project-card">
                             <h3>EvSentry8</h3>
                             <p>AI-powered tomato leaf disease detection with adjustable confidence levels. Built with computer vision and machine learning.</p>
                             <div class="tech-stack">
-                                <span>AI</span>
-                                <span>Computer Vision</span>
-                                <span>Hugging Face</span>
+                                <span>AI</span><span>Computer Vision</span><span>Hugging Face</span>
                             </div>
                             <a href="https://huggingface.co/spaces/Jeff28/EvSentry8" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- FarMVi8ioN -->
                         <div class="featured-project-card">
                             <h3>FarMVi8ioN</h3>
                             <p>Farm Vision AI tool for agricultural analysis and monitoring using advanced computer vision techniques.</p>
                             <div class="tech-stack">
-                                <span>AI</span>
-                                <span>Machine Learning</span>
-                                <span>Agriculture Tech</span>
+                                <span>AI</span><span>Machine Learning</span><span>Agriculture Tech</span>
                             </div>
                             <a href="https://huggingface.co/spaces/Jeff28/FarMVi8ioN" class="project-link" target="_blank">View Project</a>
                         </div>
 
-                        <!-- SynapticRandNumGen -->
                         <div class="featured-project-card">
                             <h3>SynapticRandNumGen</h3>
                             <p>Neural Network-Powered Random Number Generator for Unpredictable Sequences using advanced ML algorithms.</p>
                             <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Neural Networks</span>
-                                <span>Machine Learning</span>
+                                <span>Python</span><span>Neural Networks</span><span>Machine Learning</span>
                             </div>
                             <a href="https://github.com/Jeff9497/SynapticRandNumGen" class="project-link" target="_blank">View Project</a>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -270,74 +321,60 @@
                 <div class="skills__container bd-grid">
                     <div>
                         <h2 class="skills__subtitle">Professional Skills</h2>
-                        <p class="skills__text">I possess a versatile skill set encompassing software development, AI, machine learning, and networking, with a proven ability to transform conceptual ideas into tangible, innovative solutions.<br> Here are some of the languages I am pro-efficient in : </p>
+                        <p class="skills__text">I possess a versatile skill set encompassing software development, AI, machine learning, and networking, with a proven ability to transform conceptual ideas into tangible, innovative solutions.<br> Here are some of the languages I am pro-efficient in:</p>
+
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">HTML 5 </span>
+                                <span class="skills__name">HTML 5</span>
                             </div>
-                            <div class="skills__bar skills__html">
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
+                            <div class="skills__bar skills__html"></div>
+                            <div><span class="skills__percentage">80%</span></div>
                         </div>
+
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-typescript skills__icon'></i>
                                 <span class="skills__name">TYPESCRIPT</span>
                             </div>
-                            <div class="skills__bar skills__css">
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
+                            <div class="skills__bar skills__css"></div>
+                            <div><span class="skills__percentage">85%</span></div>
                         </div>
+
                         <div class="skills__data">
                             <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
+                                <i class='bx bxl-javascript skills__icon'></i>
                                 <span class="skills__name">JAVASCRIPT</span>
                             </div>
-                            <div class="skills__bar skills__js">
-                            </div>
-                            <div>
-                                <span class="skills__percentage">75%</span>
-                            </div>
+                            <div class="skills__bar skills__js"></div>
+                            <div><span class="skills__percentage">75%</span></div>
                         </div>
+
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-python skills__icon'></i>
                                 <span class="skills__name">PYTHON</span>
                             </div>
-                            <div class="skills__bar skills__ux">
-                            </div>
-                            <div>
-                                <span class="skills__percentage">90%</span>
-                            </div>
+                            <div class="skills__bar skills__ux"></div>
+                            <div><span class="skills__percentage">90%</span></div>
                         </div>
-                        <!-- New skill: React -->
+
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-react skills__icon'></i>
                                 <span class="skills__name">REACT</span>
                             </div>
-                            <div class="skills__bar skills__react">
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
+                            <div class="skills__bar skills__react"></div>
+                            <div><span class="skills__percentage">80%</span></div>
                         </div>
-                        <!-- New skill: Node.js -->
+
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-nodejs skills__icon'></i>
                                 <span class="skills__name">NODE.JS</span>
                             </div>
-                            <div class="skills__bar skills__nodejs">
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
+                            <div class="skills__bar skills__nodejs"></div>
+                            <div><span class="skills__percentage">85%</span></div>
                         </div>
                     </div>
 
@@ -351,25 +388,12 @@
             <section class="work section" id="work">
                 <h2 class="section-title">Work</h2>
                 <div class="work__container bd-grid">
-                    <div class="work__img">
-                        <img src="assets/img/chat28.png" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/whatsapifybot.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/whatsapifyminder.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/sql.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/webdesign.jpg" alt="">
-                    </div>
-                    <div class="work__img">
-                        <img src="assets/img/tech.jpg" alt="">
-                        </div>
-                    </div>
+                    <div class="work__img"><img src="assets/img/chat28.png" alt=""></div>
+                    <div class="work__img"><img src="assets/img/whatsapifybot.jpg" alt=""></div>
+                    <div class="work__img"><img src="assets/img/whatsapifyminder.jpg" alt=""></div>
+                    <div class="work__img"><img src="assets/img/sql.jpg" alt=""></div>
+                    <div class="work__img"><img src="assets/img/webdesign.jpg" alt=""></div>
+                    <div class="work__img"><img src="assets/img/tech.jpg" alt=""></div>
                 </div>
 
                 <!-- Certifications Section -->
@@ -409,7 +433,10 @@
             <div class="footer__social">
                 <a href="https://github.com/Jeff9497" class="footer__icon" target="_blank"><i class='bx bxl-github'></i></a>
                 <a href="https://x.com/Jeffmk941" class="footer__icon" target="_blank"><i class='bx bxl-twitter'></i></a>
-               <a href="assets/Geofrey_Kamau_CV_.pdf" class="footer__icon" target="_blank"><i class='bx bx-file' title="View CV"></i></a>
+                <!-- CV icon — opens modal on the page -->
+                <a href="#" class="footer__icon" onclick="document.getElementById('cv-modal').classList.add('active'); return false;" title="View CV">
+                    <i class='bx bx-file'></i>
+                </a>
                 <a href="mailto:jeffkamau9497@gmail.com" class="footer__icon" target="_blank"><i class='bx bx-envelope' title="Email Me"></i></a>
             </div>
             <div class="visitor-counter">
@@ -423,5 +450,21 @@
         <script src="https://unpkg.com/scrollreveal"></script>
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+
+        <!-- CV Modal Script -->
+        <script>
+            function closeCVModal(event) {
+                // Close only if clicking the dark overlay, not the modal box itself
+                if (event.target === document.getElementById('cv-modal')) {
+                    document.getElementById('cv-modal').classList.remove('active');
+                }
+            }
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.getElementById('cv-modal').classList.remove('active');
+                }
+            });
+        </script>
     </body>
 </html>
